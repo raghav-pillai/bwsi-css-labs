@@ -22,11 +22,14 @@ def max_subarray_sum(nums: list[int]) -> int:
 
     max_current = max_global = nums[0]
     
+    is_first = True
     for num in nums:
-        max_current = max(num, max_current + num)
-        if max_current < max_global:
-            max_global = max_current
-            
+        if is_first == False:
+            max_current = max(num, max_current + num)
+            if max_current > max_global:
+                max_global = max_current
+        else:
+            is_first = False
     return max_global
 
 # Example usage:

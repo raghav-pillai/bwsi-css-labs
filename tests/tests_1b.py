@@ -6,6 +6,7 @@ This module contains unit tests for the simple_calculator function defined in la
 
 import pytest
 from labs.lab_1.lab_1b import simple_calculator
+from labs.lab_1.lab_1c import max_subarray_sum
 
 def test_addition():
     assert simple_calculator("add", 5, 3) == 8          # Test for positive numbers
@@ -36,6 +37,11 @@ def test_invalid_operation():
         simple_calculator("modulus", 5, 3)              # Test for invalid operation
     with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
         simple_calculator("", 5, 3)                     # Test for empty operation
+
+def test_1c():
+    assert max_subarray_sum([1, 2, 3, 4, 5, 1]) == 16
+    assert max_subarray_sum([5, -2, 10, -1, 8]) == 20
+    assert max_subarray_sum([10]) == 10
 
 if __name__ == "__main__":
     pytest.main()
